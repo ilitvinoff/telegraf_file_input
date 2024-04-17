@@ -4,14 +4,12 @@ package file
 import (
 	_ "embed"
 	"fmt"
+	"github.com/dimchansky/utfbom"
 	"io"
 	"os"
 	"path/filepath"
 
-	"github.com/dimchansky/utfbom"
-
 	"github.com/influxdata/telegraf"
-	"github.com/influxdata/telegraf/internal/globpath"
 	"github.com/influxdata/telegraf/plugins/common/encoding"
 	"github.com/influxdata/telegraf/plugins/inputs"
 )
@@ -23,6 +21,7 @@ type File struct {
 	Files             []string `toml:"files"`
 	FileTag           string   `toml:"file_tag"`
 	CharacterEncoding string   `toml:"character_encoding"`
+	MoveToDirectory   string	`toml:"move_to"`
 
 	parserFunc telegraf.ParserFunc
 	filenames  []string
@@ -67,7 +66,7 @@ func (f *File) SetParserFunc(fn telegraf.ParserFunc) {
 func (f *File) refreshFilePaths() error {
 	var allFiles []string
 	for _, file := range f.Files {
-		g, err := globpath.Compile(file)
+		g, err := Compile(file)
 		if err != nil {
 			return fmt.Errorf("could not compile glob %q: %w", file, err)
 		}
