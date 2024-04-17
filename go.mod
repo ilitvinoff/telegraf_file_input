@@ -1,9 +1,13 @@
 module github.com/ilitvinoff/telegraf_file_input
 
-go 1.22.2
+go 1.22
+
+toolchain go1.22.2
 
 require (
+	github.com/bmatcuk/doublestar/v3 v3.0.0
 	github.com/dimchansky/utfbom v1.1.1
+	github.com/gobwas/glob v0.2.3
 	github.com/influxdata/telegraf v1.30.1
 )
 
@@ -16,11 +20,9 @@ require (
 	github.com/awnumar/memcall v0.2.0 // indirect
 	github.com/awnumar/memguard v0.22.4 // indirect
 	github.com/benbjohnson/clock v1.3.5 // indirect
-	github.com/bmatcuk/doublestar/v3 v3.0.0 // indirect
 	github.com/compose-spec/compose-go v1.20.2 // indirect
 	github.com/coreos/go-semver v0.3.1 // indirect
 	github.com/fatih/color v1.16.0 // indirect
-	github.com/gobwas/glob v0.2.3 // indirect
 	github.com/golang-jwt/jwt/v5 v5.2.0 // indirect
 	github.com/google/cel-go v0.18.1 // indirect
 	github.com/gosnmp/gosnmp v1.37.0 // indirect

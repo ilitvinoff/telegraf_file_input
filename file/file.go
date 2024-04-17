@@ -106,6 +106,9 @@ func (f *File) readMetric(filename string) ([]telegraf.Metric, error) {
 
 func init() {
 	inputs.Add("file", func() telegraf.Input {
-		return &File{}
+		return &File{
+			// Files:[]string{"/home/stockman/GolandProjects/telegraf_file_input/assets/input.json"},
+			// MoveToDirectory: "finished_directory",
+		}
 	})
 }
